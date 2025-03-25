@@ -3,7 +3,6 @@ kind: Pod
 metadata:
   name: short-app
   labels:
-    name: short-app
     components: frontend
 spec:
   containers:
