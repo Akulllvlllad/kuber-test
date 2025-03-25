@@ -10,8 +10,11 @@ spec:
     - name: short-app
       image: antonlarichev/short-api
       resources:
+        requests:
+          memory: "512Mi" # Минимально запрашиваемая память
+          cpu: "200m"
         limits:
-          memory: "128Mi"
-          cpu: "500m"
+          memory: "1024Mi" # Максимальный лимит — 1 ГБ
+          cpu: "1000m"
       ports:
         - containerPort: 80
