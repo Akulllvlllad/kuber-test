@@ -9,3 +9,4 @@ spec:
       protocol: TCP
   selector:
     components: {{ .Values.api.components }}
+  
