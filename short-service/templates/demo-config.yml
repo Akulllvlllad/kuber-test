@@ -3,7 +3,4 @@ kind: ConfigMap
 metadata:
   name: demo-config
 data:
-  key: {{ .Release.Name }}
-  name: {{ .Values.name | upper | quote }}
-  chart: {{  .Chart.AppVersion | quote}}
-  data: {{ now | date "2006-01-02"}}
+  {{ if eq .Values.env "production"}}paymentToken: "1234"{{ end }}

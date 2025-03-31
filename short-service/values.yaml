@@ -1,7 +1,4 @@
-name: Anton
-components: frontend 
-
-
+env: production
 app:
   version: 1
   components: frontend
