@@ -1,1 +1,14 @@
 name: Anton
+components: frontend 
+
+
+app:
+  version: 1
+  components: frontend
+  name: short-app
+  containerPort: 80
+  image: antonlarichev/short-app
+  imageVersion: latest
+  limits:
+    cpu: "100m"
+    memory: "128Mi"
