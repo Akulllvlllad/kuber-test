@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.api.name }}-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      components: {{ .Values.api.components }}
+  template:
+    metadata:
+      name: {{ .Values.api.name }}
+      labels:
+        components: {{ .Values.api.components }}
+    spec:
+      containers:
+        - name: {{ .Values.api.name }}
+          image: "{{ .Values.api.image }}:{{ .Values.api.imageVersion }}"
+          imagePullPolicy: Always
+          resources:
+            limits: {{ .Values.api.limits | toYaml | nindent 14 }}
+          ports:
+            - containerPort: {{ .Values.api.containerPort }}
+          env:
+              - name: {{ .Values.api.env }}
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ .Values.api.name }}-secret
+                    key: {{ .Values.api.env }}
+          volumeMounts:
+            - name: test
+              mountPath: /etc/test
+              readOnly: true

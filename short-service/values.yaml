@@ -10,7 +10,30 @@ app:
     cpu: "100m"
     memory: "128Mi"
 
+api:
+  version: 1
+  components: backend
+  name: short-api
+  containerPort: 3000
+  image: antonlarichev/short-api
+  imageVersion: latest
+  env: DATABASE_URL
+  limits:
+    cpu: "200m"
+    memory: "500Mi"
 
-names:
-  - Anton
-  - Vasia
+postgres:
+  name: postgres
+  image: antonlarichev/short-api
+  components: backend
+  port: 5432
+  limits:
+    cpu: "200m"
+    memory: "500Mi"
+
+
+database:
+  user: demo
+  password: demo
+  db: demo
+  host: postgres-clusterip
