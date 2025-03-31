@@ -8,7 +8,7 @@ data:
   {{ else }}
   paymentToken: "false"
   {{- end }}
-  users: |-
+  users:
     {{- range .Values.users }}
-    - name: {{ .name }}
+    name: {{ .name }}
     {{- end }}
