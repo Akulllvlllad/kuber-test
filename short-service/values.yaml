@@ -9,3 +9,8 @@ app:
   limits:
     cpu: "100m"
     memory: "128Mi"
+
+
+names:
+  - Anton
+  - Vasia

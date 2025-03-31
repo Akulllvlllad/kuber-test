@@ -3,4 +3,12 @@ kind: ConfigMap
 metadata:
   name: demo-config
 data:
-  {{ if eq .Values.env "production"}}paymentToken: "1234"{{ end }}
+  {{- if eq .Values.env "production"}}
+  paymentToken: "true"
+  {{ else }}
+  paymentToken: "false"
+  {{- end }}
+  users: |-
+    {{- range .Values.users }}
+    - name: {{ .name }}
+    {{- end }}
