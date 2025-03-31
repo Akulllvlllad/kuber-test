@@ -24,7 +24,7 @@ spec:
           env:
             {{- range .Values.api.envs }}
             {{- $data := dict "name" $.Values.api.name "env" . }}
-            {{- include "env.template" | indent 12}}
+            {{- include "env.template" $data | indent 12 }}
             {{- end }}
             - name: {{ .Values.api.env }}
               valueFrom:
