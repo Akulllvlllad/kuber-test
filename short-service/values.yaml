@@ -17,7 +17,8 @@ api:
   containerPort: 3000
   image: antonlarichev/short-api
   imageVersion: latest
-  env: DATABASE_URL
+  envs: 
+    - DATABASE_URL
   limits:
     cpu: "200m"
     memory: "500Mi"

@@ -22,11 +22,14 @@ spec:
           ports:
             - containerPort: {{ .Values.api.containerPort }}
           env:
-              - name: {{ .Values.api.env }}
-                valueFrom:
-                  secretKeyRef:
-                    name: {{ .Values.api.name }}-secret
-                    key: {{ .Values.api.env }}
+            {{- range .Values.api.envs }}
+            {{ - include "env.template" | indent 12}}
+            {{- end }}
+            - name: {{ .Values.api.env }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.api.name }}-secret
+                  key: {{ .Values.api.env }}
           volumeMounts:
             - name: test
               mountPath: /etc/test
