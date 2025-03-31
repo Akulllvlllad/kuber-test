@@ -18,13 +18,13 @@ spec:
           image: "{{ .Values.api.image }}:{{ .Values.api.imageVersion }}"
           imagePullPolicy: Always
           resources:
-            limits: {{ .Values.api.limits | toYaml | indent 12 }}
+            limits: {{ .Values.api.limits | toYaml | nindent 12 }}
           ports:
             - containerPort: {{ .Values.api.containerPort }}
           env:
             {{- range .Values.api.envs }}
             {{- $data := dict "name" $.Values.api.name "env" . }}
-            {{- include "env.template" $data | indent 12 }}
+            {{- include "env.template" $data | nindent 10 }}
             {{- end }}
           volumeMounts:
             - name: test
