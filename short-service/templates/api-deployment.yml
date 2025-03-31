@@ -26,11 +26,6 @@ spec:
             {{- $data := dict "name" $.Values.api.name "env" . }}
             {{- include "env.template" $data | indent 12 }}
             {{- end }}
-            - name: {{ .Values.api.env }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.api.name }}-secret
-                  key: {{ .Values.api.env }}
           volumeMounts:
             - name: test
               mountPath: /etc/test
