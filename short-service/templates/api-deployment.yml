@@ -18,7 +18,7 @@ spec:
           image: "{{ .Values.api.image }}:{{ .Values.api.imageVersion }}"
           imagePullPolicy: Always
           resources:
-            limits: {{ .Values.api.limits | toYaml | nindent 12 }}
+            limits: {{ .Values.api.limits | toYaml | indent 12 }}
           ports:
             - containerPort: {{ .Values.api.containerPort }}
           env:
