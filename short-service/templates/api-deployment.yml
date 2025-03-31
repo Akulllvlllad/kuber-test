@@ -28,6 +28,6 @@ spec:
           env:
             {{- range .Values.api.envs }}
             {{- $data := dict "name" $.Values.api.name "env" . }}
-            {{- include "env.template" $data | indent 12 }}
+            {{- include "env.template" $data | nindent 12 }}
             {{- end }}
           
