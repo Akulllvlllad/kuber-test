@@ -21,12 +21,13 @@ spec:
             limits: {{ .Values.api.limits | toYaml | nindent 12 }}
           ports:
             - containerPort: {{ .Values.api.containerPort }}
-          env:
-            {{- range .Values.api.envs }}
-            {{- $data := dict "name" $.Values.api.name "env" . }}
-            {{- include "env.template" $data | nindent 10 }}
-            {{- end }}
           volumeMounts:
             - name: test
               mountPath: /etc/test
               readOnly: true
+          env:
+            {{- range .Values.api.envs }}
+            {{- $data := dict "name" $.Values.api.name "env" . }}
+            {{- include "env.template" $data | indent 10 }}
+            {{- end }}
+          
