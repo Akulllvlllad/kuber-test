@@ -18,6 +18,6 @@ spec:
           image: "{{ .Values.app.image }}:{{ .Values.app.imageVersion }}"
           imagePullPolicy: Always
           resources:
-            limits: {{ .Values.app.limits | toYaml | nindent 16 }}
+            limits: {{ .Values.app.limits | toYaml | nindent 14 }}
           ports:
             - containerPort: {{ .Values.app.containerPort }}
