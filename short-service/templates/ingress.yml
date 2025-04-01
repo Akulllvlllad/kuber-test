@@ -7,18 +7,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: 103.74.94.180.nip.io
-      http:
+    - http:
         paths:
-          - pathType: Prefix
-            path: "/"
+          - path: "/"
+            pathType: Prefix
             backend:
               service:
                 name: short-app-clusterip
                 port:
                   number: 80
-          - pathType: Prefix
-            path: "/api"
+          - path: "/api"
+            pathType: Prefix
             backend:
               service:
                 name: short-api-clusterip
