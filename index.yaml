@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  short-service:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-01T16:24:18.768805343+07:00"
+    description: A Helm chart for Kubernetes
+    digest: f57f58b3edbbce649c763dce1dfa69dbd3dfcee09edd7176921336f6c409188c
+    name: short-service
+    type: application
+    urls:
+    - short-service-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-01T16:24:18.76811149+07:00"
