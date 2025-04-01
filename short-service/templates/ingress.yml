@@ -5,10 +5,10 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/add-base-url: "true"
 spec:
-  hostNetwork: true
   ingressClassName: nginx
   rules:
-    - http:
+    - host: localhost  
+      http:
         paths:
           - path: "/"
             pathType: Prefix
