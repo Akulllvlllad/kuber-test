@@ -13,7 +13,6 @@ spec:
       labels:
         components: backend
     spec:
-      hostNetwork: true
       containers:
         - name: short-api
           image: antonlarichev/short-api:latest
