@@ -21,8 +21,8 @@ api:
   envs: 
     - DATABASE_URL
   limits:
-    cpu: "200m"
-    memory: "500Mi"
+    cpu: "500m"
+    memory: "900Mi"
 
 postgres:
   name: postgres
