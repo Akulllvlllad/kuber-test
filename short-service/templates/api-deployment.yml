@@ -1,28 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.api.name }}-deployment
+  name: short-api-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      components: {{ .Values.api.components }}
+      components: backend
   template:
     metadata:
-      name: {{ .Values.api.name }}
+      name: short-api
       labels:
-        components: {{ .Values.api.components }}
+        components: backend
     spec:
       containers:
-        - name: {{ .Values.api.name }}
+        - name: short-api
           image: antonlarichev/short-api:latest
           imagePullPolicy: Always
           resources:
-            limits: {{ .Values.api.limits | toYaml | nindent 14 }}
+            requests:
+              memory: "512Mi"
+              cpu: "200m"
+            limits:
+              memory: "1024Mi"
+              cpu: "1000m"
           ports:
-            - containerPort: {{ .Values.api.containerPort }}
+            - containerPort: 3000
           env:
-            {{- range .Values.api.envs }}
-            {{- $data := dict "name" $.Values.api.name "env" . }}
-            {{- include "env.template" $data | nindent 12 }}
-            {{- end }}
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: short-api-secret
+                  key: POSTGRES_URL
+          volumeMounts:
+            - name: test
+              mountPath: /etc/test
+              readOnly: true
+      volumes:
+        - name: test
+          configMap:
+            name: demo-config
