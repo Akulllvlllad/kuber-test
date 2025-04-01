@@ -17,13 +17,12 @@ api:
   containerPort: 3000
   image: antonlarichev/short-api
   imageVersion: latest
-  env: DATABASE_URL
   envs: 
     - DATABASE_URL
   limits:
-    cpu: "500m"
-    memory: "900Mi"
-
+    cpu: "1000m"
+    memory: "1024Mi"
+    
 postgres:
   name: postgres
   image: postgres

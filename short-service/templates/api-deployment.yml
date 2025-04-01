@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.api.name }}
-          image: "{{ .Values.api.image }}:{{ .Values.api.imageVersion }}"
+          image: antonlarichev/short-api:latest
           imagePullPolicy: Always
           resources:
             limits: {{ .Values.api.limits | toYaml | nindent 14 }}
